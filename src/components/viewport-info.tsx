@@ -11,6 +11,7 @@ import { Clipboard, Smartphone, Ratio, Tablet, Monitor, Grid2x2, Check } from 'l
 import React, { useState, useCallback, useEffect } from 'react';
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/components/ui/tooltip';
 import { PixelGrid } from './pixel-grid';
+import { ClickGrid } from '@/components/click-grid';
 
 const BREAKPOINTS: Record<ReturnType<typeof useViewport>['breakpoint'], string> = {
   'xs': '< 640px',
@@ -74,6 +75,7 @@ export function ViewportInfo() {
   return (
     <TooltipProvider>
       <PixelGrid show={showGrid} dpr={viewport.dpr!} />
+      {showGrid && <ClickGrid />}
       <div className="w-full max-w-7xl">
         <div className="flex flex-col lg:flex-row items-center justify-center gap-4 md:gap-8 mb-8 text-center">
           <div className="font-black text-6xl sm:text-7xl md:text-8xl tracking-tighter flex items-center transition-all duration-300">
